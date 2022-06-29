@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 
-List<CategoriesModel> lugaresModelFromJson(String str) => List<CategoriesModel>.from(json.decode(str).map((x) => CategoriesModel.fromJson(x)));
+List<CategoriesModel> categoriesModelFromJson(String str) => List<CategoriesModel>.from(json.decode(str).map((x) => CategoriesModel.fromJson(x)));
 
 class CategoriesModel {
     CategoriesModel({

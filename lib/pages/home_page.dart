@@ -1,9 +1,11 @@
-import 'dart:developer';
+// ignore_for_file: sized_box_for_whitespace
+
+
 import 'package:app_turismo/models/categoria.dart';
-import 'package:app_turismo/models/evento.dart';
+// import 'package:app_turismo/models/evento.dart';
 import 'package:app_turismo/models/lugares.dart';
 import 'package:app_turismo/pages/placedetail_page.dart';
-import 'package:app_turismo/services/events_providers.dart';
+// import 'package:app_turismo/services/events_providers.dart';
 import 'package:app_turismo/services/places_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     getCategory();
     getPlacesByCategory('All');
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _categories(),
-              const SizedBox(height: 15.0),
+              const SizedBox(height: 20.0),
               const Text("Lugares",
                   style: TextStyle(
                       fontSize: 20.0,
@@ -79,7 +81,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _places() {
     if (loadingPlaces) return _sckeleto();
-    // ignore: sized_box_for_whitespace
+  
     return Container(
         margin: const EdgeInsets.only(top: 20),
         height: 250,
@@ -120,7 +122,9 @@ class _HomePageState extends State<HomePage> {
                             width: double.infinity,
                             child: Center(
                                 child: Text(
-                              listLugares[index].title!,
+                                
+                              listLugares[index].title!.toUpperCase(),
+                               style: const TextStyle(fontSize: 15.0,fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
                             )),
                           ),
@@ -129,33 +133,33 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 })
-            : const Center(child: Text('No hay Lugares')));
+            : const Center(child: Text('No hay Lugares',style: TextStyle(color: Colors.white))));
   }
 
-  Widget _events(EventsProviders eventsProviders) {
-    // ignore: avoid_unnecessary_containers
-    return Container(
-        child: FutureBuilder<List<EventosModel>>(
-            initialData: eventsProviders.eventos,
-            future: eventsProviders.getEvents(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                final lista = snapshot.data ?? [];
-                log('${lista.length}');
-                return ListView.builder(
-                    itemCount: lista.length,
-                    itemBuilder: (_, index) {
-                      return Column(
-                        children: [
-                          Text(lista[index].title!),
-                          Image.network(lista[index].images![0])
-                        ],
-                      );
-                    });
-              }
-              return const CircularProgressIndicator();
-            }));
-  }
+  // Widget _events(EventsProviders eventsProviders) {
+  //   // ignore: avoid_unnecessary_containers
+  //   return Container(
+  //       child: FutureBuilder<List<EventosModel>>(
+  //           initialData: eventsProviders.eventos,
+  //           future: eventsProviders.getEvents(),
+  //           builder: (context, snapshot) {
+  //             if (snapshot.hasData) {
+  //               final lista = snapshot.data ?? [];
+  //               log('${lista.length}');
+  //               return ListView.builder(
+  //                   itemCount: lista.length,
+  //                   itemBuilder: (_, index) {
+  //                     return Column(
+  //                       children: [
+  //                         Text(lista[index].title!),
+  //                         Image.network(lista[index].images![0])
+  //                       ],
+  //                     );
+  //                   });
+  //             }
+  //             return const CircularProgressIndicator();
+  //           }));
+  // }
 
   Widget _sckeleto() {
     return Container(
@@ -173,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Container(
-                  margin: EdgeInsets.symmetric(horizontal:15.0),
+                  margin: const EdgeInsets.symmetric(horizontal:15.0),
                   decoration: BoxDecoration(
                    color: Colors.grey,
                   borderRadius:BorderRadius.circular(30.0),
@@ -197,8 +201,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
     final placesProvider = Provider.of<PlacesProviders>(context, listen: false);
     listLugares = await placesProvider.getPlaces(category);
-    await Future.delayed(const Duration(milliseconds: 500));
-
+    // await Future.delayed(const Duration(milliseconds: 100));
     setState(() => loadingPlaces = false);
   }
 }
