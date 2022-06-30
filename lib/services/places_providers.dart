@@ -7,12 +7,13 @@ import 'package:http/http.dart' as http;
 class PlacesProviders extends ChangeNotifier {
   List<LugaresModel> lugares = [];
 
-  Future<List<LugaresModel>> getPlaces(String category) async {
+  Future<List<LugaresModel>> getPlaces(String category, String search) async {
     String url = "";
-    if (category!="All") {
-      url = "${ConstansApi.baseUrlplaces}?category=$category";
+    if (category != "All") {
+      url =
+          "${ConstansApi.baseUrlplaces}?category=$category&title[regex]=$search";
     } else {
-      url = ConstansApi.baseUrlplaces;
+      url = '${ConstansApi.baseUrlplaces}?title[regex]=$search';
     }
     Uri uri = Uri.parse(url);
     var response = await http.get(uri);

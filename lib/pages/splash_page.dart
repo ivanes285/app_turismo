@@ -20,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       // ignore: sized_box_for_whitespace
       body: Container(
           height: size.height,
@@ -33,15 +33,22 @@ class _SplashPageState extends State<SplashPage> {
                 'assets/logo.png',
                 height: 250,
               ),
-               const SizedBox(
-                height: 30.0,
-              ),
-              const Text("Pedro Moncayo Turismo",style: TextStyle(color: Colors.white,
-               fontSize: 25.0, decorationStyle: TextDecorationStyle.wavy)),
               const SizedBox(
                 height: 30.0,
               ),
-              const CircularProgressIndicator(color: Colors.white)
+              const Text("Pedro Moncayo Turismo",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25.0,
+                      decorationStyle: TextDecorationStyle.wavy)),
+              const SizedBox(
+                height: 30.0,
+              ),
+              const SizedBox(
+                  width: 250,
+                  child: Center(
+                    child: LinearProgressIndicator(),
+                  ))
             ],
           ))),
     );

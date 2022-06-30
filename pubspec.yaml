@@ -36,6 +36,8 @@ dependencies:
   shimmer: ^2.0.0
   google_fonts: ^3.0.1
   carousel_slider: ^4.1.1
+  url_launcher: ^6.1.4
+  map_launcher: ^2.2.3
  
 
 dev_dependencies:
