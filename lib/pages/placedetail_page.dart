@@ -2,23 +2,31 @@
 
 import 'dart:developer';
 import 'package:app_turismo/models/lugares.dart';
+import 'package:app_turismo/services/conection_status_provider.dart';
 import 'package:app_turismo/theme/theme.dart';
+import 'package:app_turismo/utils/check_internet_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:map_launcher/map_launcher.dart';
 
+ConnectionStatus status = ConnectionStatus.online;
+
 class PlaceDetail extends StatefulWidget {
-  const PlaceDetail({Key? key, required this.lugar}) : super(key: key);
   final LugaresModel lugar;
+  const PlaceDetail({Key? key, required this.lugar}) : super(key: key);
+
   @override
   State<PlaceDetail> createState() => _PlaceDetailState();
 }
 
 class _PlaceDetailState extends State<PlaceDetail> {
   LugaresModel get lugar => widget.lugar;
+
   @override
   Widget build(BuildContext context) {
+    final conexion = Provider.of<ConnectionStatusChangeNotifier>(context);
     return SafeArea(
       child: Scaffold(
           backgroundColor: kBackgroundColor,
@@ -27,50 +35,44 @@ class _PlaceDetailState extends State<PlaceDetail> {
               //CARRUSEL IMAGES
               Column(
                 children: [
-                  lugar.images!.length >1 ?
-                  Container(
-                      child: CarouselSlider(
-                     options: CarouselOptions(
-                      height: 350,
-                      scrollDirection: Axis.horizontal,
-                      autoPlay: lugar.images!.length>1? true : false,
-                      disableCenter: true,
-
-                      enlargeCenterPage: true,
-                    ),
-                    items: lugar.images!
-                       
-                        .map((item) => Container(
-                              child: Center(
-                                  child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(item,
-                                    fit: BoxFit.cover,
-                                    width: 1300,
-                                    height: 1200),
-                              )),
-                            ))
-                        .toList(),
-                  ))
-                  :
-                  Container(
-
-                  child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.network(lugar.images!.first)),
-                  
-                  
-                  )
+                  lugar.images!.length > 1
+                      ? Container(
+                          child: CarouselSlider(
+                          options: CarouselOptions(
+                            height: 350,
+                            scrollDirection: Axis.horizontal,
+                            autoPlay: lugar.images!.length > 1 ? true : false,
+                            disableCenter: true,
+                            enlargeCenterPage: true,
+                          ),
+                          items: lugar.images!
+                              .map((item) => Container(
+                                    child: Center(
+                                        child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.network(item,
+                                          fit: BoxFit.cover,
+                                          width: 1300,
+                                          height: 1200),
+                                    )),
+                                  ))
+                              .toList(),
+                        ))
+                      : Container(
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.network(lugar.images!.first)),
+                        )
                 ],
               ),
               //TITULO
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.only(
-                    top: 30,
+                    top: 18,
                     left: defaultMargin,
                     right: defaultMargin,
-                    bottom: 30),
+                    bottom: 20),
                 decoration: BoxDecoration(color: kBackgroundColor),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -80,9 +82,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
                       child: Text(
                         lugar.title!.toUpperCase(),
                         style: yellowTextStyle.copyWith(
-                          fontSize: 24,
+                          fontSize: 22,
                           fontWeight: semiBold,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     const SizedBox(
@@ -108,7 +111,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
                           ),
                         ),
                         InkWell(
-                          onTap: () => {log("Compartir")},
+                          onTap: () => {log(conexion.status.toString())},
                           child: Column(
                             children: const [
                               Icon(
@@ -125,12 +128,16 @@ class _PlaceDetailState extends State<PlaceDetail> {
                         ),
                         InkWell(
                           onTap: () async {
-                            final availableMaps =
-                                await MapLauncher.installedMaps;
-                            await availableMaps.first.showMarker(
-                              coords: Coords(double.parse(lugar.lat!),double.parse(lugar.lng!)),
-                              title: lugar.title!.toUpperCase(),
-                            );
+                            final disponible = await MapLauncher.isMapAvailable(
+                                MapType.google);
+                            if (disponible!) {
+                              await MapLauncher.showMarker(
+                                  mapType: MapType.google,
+                                  coords: Coords(double.parse(lugar.lat!),
+                                      double.parse(lugar.lng!)),
+                                  title: lugar.title!.toUpperCase(),
+                                  extraParams: {});
+                            }
                           },
                           child: Column(
                             children: const [
@@ -158,15 +165,45 @@ class _PlaceDetailState extends State<PlaceDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Description',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 18,
-                        fontWeight: semiBold,
+                    Row(
+                      children:[ Text(
+                        'Descripción del Lugar',
+                        style: whiteTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: semiBold,
+                            color: kPrimaryColor),
                       ),
+                      const SizedBox(width:5),
+                      const Icon(
+                                Icons.description,
+                                color: Colors.white,
+                                size: 18.0,
+                              ),
+                      ]
                     ),
                     Text(
                       lugar.description!,
+                      style: whiteTextStyle.copyWith(
+                          fontSize: 14, fontWeight: regular),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Row(children: [
+                      Text(
+                        'Parroquia',
+                        style: whiteTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: semiBold,
+                            color: kPrimaryColor),
+                      ),
+                      const SizedBox(width:5),
+                      const Icon(
+                                Icons.place,
+                                color: Colors.white,
+                                size: 18.0,
+                              ),
+                    ]),
+                    Text(
+                      lugar.parroquia!,
                       style: whiteTextStyle.copyWith(
                           fontSize: 14, fontWeight: regular),
                       textAlign: TextAlign.justify,

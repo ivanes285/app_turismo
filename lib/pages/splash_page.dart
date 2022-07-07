@@ -57,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
   void toHome() async {
     log("Splash Ejecutado");
     await Future.delayed(
-        const Duration(seconds: 3),
+        const Duration(seconds: 2),
         () => {
               Navigator.pushReplacement(
                 context,

@@ -1,20 +1,20 @@
-import 'package:app_turismo/models/lugares.dart';
+import 'package:app_turismo/models/evento.dart';
 import 'package:flutter/material.dart';
 
-class PlaceDetail extends StatefulWidget {
-   const PlaceDetail({Key? key,  required this.lugar}) : super(key: key);
-  final LugaresModel lugar;
+class EventDetail extends StatefulWidget {
+   const EventDetail({Key? key,  required this.evento}) : super(key: key);
+  final EventosModel evento;
   @override
-  State<PlaceDetail> createState() => _PlaceDetailState();
+  State<EventDetail> createState() => _EventDetailState();
 }
 
-class _PlaceDetailState extends State<PlaceDetail> {
-LugaresModel get lugar=> widget.lugar;
+class _EventDetailState extends State<EventDetail> {
+EventosModel get evento=> widget.evento;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
     body: Center(
-    child:Text(lugar.title!)
+    child:Text(evento.title!)
     ) ,
     );
   }

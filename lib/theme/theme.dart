@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-double defaultMargin = 30.0;
+double defaultMargin = 20.0;
 double defaultBorder = 20.0;
 
 Color kWhiteColor = const Color(0xffFFFFFF);
