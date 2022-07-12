@@ -6,7 +6,6 @@ import 'package:app_turismo/models/evento.dart';
 import 'package:app_turismo/models/lugares.dart';
 import 'package:app_turismo/pages/event_page.dart';
 import 'package:app_turismo/pages/place_page.dart';
-
 import 'package:app_turismo/providers/conection_status_provider.dart';
 import 'package:app_turismo/providers/events_providers.dart';
 import 'package:app_turismo/providers/places_providers.dart';
@@ -28,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   ConnectionStatus status = ConnectionStatus.online;
   static var search = '';
   static var category = '';
-
   List<CategoriesModel> listCategory = [];
   List<LugaresModel> listLugares = [];
   List<EventosModel> listEventos = [];
@@ -83,10 +81,11 @@ class _HomePageState extends State<HomePage> {
                             },
                             decoration: InputDecoration(
                               hintText: "Busca un lugar",
-                          
+                             
                               hintStyle: const TextStyle(color: Colors.white),
                               prefixIcon: const Icon(Icons.search),
-                              prefixIconColor: Colors.red,
+                              prefixIconColor: Colors.white,
+                              prefixStyle:const TextStyle(color: Colors.white),
                               fillColor: Themas.kBackgroundColorButton,
                               filled: true,
                               contentPadding: const EdgeInsets.fromLTRB(

@@ -29,7 +29,7 @@ class _Navegacion extends StatelessWidget {
     final navegacionModel = Provider.of<_NavegacionModel>(context);
     return BottomNavigationBar(
     
-      backgroundColor: Themas.kGreyColor,
+      backgroundColor: Themas.kBackgroundColorButton,
       selectedItemColor: Themas.kWhiteColor,
       iconSize: 35,
       selectedFontSize: 13,
@@ -40,7 +40,7 @@ class _Navegacion extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
         BottomNavigationBarItem(icon: Icon(Icons.smart_screen), label: 'Contacto'),
-        BottomNavigationBarItem(icon: Icon(Icons.help), label: 'Help')
+        BottomNavigationBarItem(icon: Icon(Icons.help), label: 'Settings')
       ],
     );
   }

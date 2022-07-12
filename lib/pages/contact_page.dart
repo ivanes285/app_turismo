@@ -7,8 +7,9 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-    child:const Center(
+    return Scaffold(
+    backgroundColor: Theme.of(context).primaryColor,
+    body:const Center(
     
     child: Text("Contacto")),
     );

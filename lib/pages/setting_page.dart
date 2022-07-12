@@ -34,7 +34,7 @@ class _SettingPageState extends State<SettingPage> {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
              Text(
               "Cambiar tema de la aplicación ?",
-              style: TextStyle(color: Theme.of(context).primaryColorDark),
+              style: TextStyle(color: Theme.of(context).primaryColorDark, fontSize:18),
             ),
             const SizedBox(
               height: 20,

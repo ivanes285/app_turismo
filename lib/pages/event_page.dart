@@ -64,28 +64,29 @@ class Events {
                                         fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.center,
                                   )),
+                                   const SizedBox(height: 12),
                                   Center(
                                       child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                  const SizedBox(width:18),
-                                  const Icon(Icons.timer),
-                                    Text(
-                                      listEventos[index].hour!,
-                                      style: const TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      listEventos[index].getDate,
-                                      style: const TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ])),
-
-
-
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                        const SizedBox(width: 18),
+                                        const Icon(Icons.timer),
+                                        Text(
+                                          listEventos[index].hour!,
+                                          style: const TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                       const SizedBox(width: 30),
+                                        const Icon(Icons.date_range),
+                                        Text(
+                                          listEventos[index].getDate,
+                                          style: const TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ])),
                                 ],
                               )),
                         ],

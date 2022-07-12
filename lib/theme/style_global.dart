@@ -8,7 +8,7 @@ class Themas {
   static Color kWhiteColor = const Color(0xffFFFFFF);
   static Color kWhiteColord = const Color.fromARGB(255, 126, 122, 122);
   static Color kBackgroundColor = const Color(0xff1A1A1A);
-  static Color kBackgroundColorButton = const Color(0xff394F5B);
+  static Color kBackgroundColorButton = const Color(0xff111B21);
   static Color kGreyColor = const Color(0xff202C33);
   static Color kPrimaryColor = const Color(0xffFEBE02);
   static TextStyle whiteTextStyle = GoogleFonts.poppins(

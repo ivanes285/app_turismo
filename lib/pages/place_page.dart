@@ -51,7 +51,7 @@ class Places{
                           ),
                         ),
                         Container(
-                          color: const Color(0xffFEBE02),
+                          color: const Color(0xff21564C),
                           height: 70.0,
                           width: double.infinity,
                           child: Center(
@@ -72,7 +72,7 @@ class Places{
           Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color:  Themas.kGreyColor ,
+                color:  Themas.kBackgroundColorButton ,
               ),
               padding: const EdgeInsets.all(30),
               width: double.infinity,

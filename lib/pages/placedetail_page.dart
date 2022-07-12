@@ -67,7 +67,9 @@ class _PlaceDetailState extends State<PlaceDetail> {
                         )
                 ],
               ),
+
               //TITULO
+
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.only(
@@ -75,7 +77,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     left: Themas.defaultMargin,
                     right: Themas.defaultMargin,
                     bottom: 20),
-                decoration: BoxDecoration(color: Themas.kBackgroundColor),
+                decoration: BoxDecoration(
+                  color: Themas.kGreyColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,6 +100,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                         
                       children: [
                         InkWell(
                           onTap: () => {_makePhoneCall(lugar.contact!)},
@@ -155,38 +161,50 @@ class _PlaceDetailState extends State<PlaceDetail> {
                             ],
                           ),
                         ),
+
                       ],
-                    )
+                     
+                    ),
+                    Container(
+                    child: const SizedBox(height: 10),
+                    ),
                   ],
+                  
                 ),
+                
               ),
+
+              //  DESCRIPCION Y PARROQUIA
               Container(
-                padding: const EdgeInsets.all(30),
-                color: Themas.kGreyColor,
+                margin: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+                padding: const EdgeInsets.all(25),
+                decoration: BoxDecoration(
+                  color: Themas.kBackgroundColorButton,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children:[ Text(
+                    Row(children: [
+                      Text(
                         'Descripción del Lugar',
                         style: Themas.whiteTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: Themas.semiBold,
                             color: Themas.kPrimaryColor),
                       ),
-                      const SizedBox(width:5),
+                      const SizedBox(width: 5),
                       const Icon(
-                                Icons.description,
-                                color: Colors.white,
-                                size: 18.0,
-                              ),
-                      ]
-                    ),
+                        Icons.description,
+                        color: Colors.white,
+                        size: 18.0,
+                      ),
+                    ]),
                     Text(
                       lugar.description!,
-                      style: Themas.whiteTextStyle.copyWith(
-                          fontSize: 14, fontWeight: Themas.regular),
+                      style: Themas.whiteTextStyle
+                          .copyWith(fontSize: 14, fontWeight: Themas.regular),
                       textAlign: TextAlign.justify,
                     ),
                     Row(children: [
@@ -197,17 +215,17 @@ class _PlaceDetailState extends State<PlaceDetail> {
                             fontWeight: Themas.semiBold,
                             color: Themas.kPrimaryColor),
                       ),
-                      const SizedBox(width:5),
+                      const SizedBox(width: 5),
                       const Icon(
-                                Icons.place,
-                                color: Colors.white,
-                                size: 18.0,
-                              ),
+                        Icons.place,
+                        color: Colors.white,
+                        size: 18.0,
+                      ),
                     ]),
                     Text(
                       lugar.parroquia!,
-                      style: Themas.whiteTextStyle.copyWith(
-                          fontSize: 14, fontWeight: Themas.regular),
+                      style: Themas.whiteTextStyle
+                          .copyWith(fontSize: 14, fontWeight: Themas.regular),
                       textAlign: TextAlign.justify,
                     )
                   ],

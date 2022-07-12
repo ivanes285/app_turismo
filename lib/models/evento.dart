@@ -23,7 +23,7 @@ class EventosModel {
   String? lugar;
   DateTime? dateEvent;
   String? hour;
-  String get getDate => DateFormat.Md().format(dateEvent!);
+  String get getDate => DateFormat.MMMd().format(dateEvent!);
 
   factory EventosModel.fromJson(Map<String, dynamic> json) => EventosModel(
         id: json["_id"],
