@@ -2,8 +2,10 @@
 
 import 'dart:developer';
 import 'package:app_turismo/models/lugares.dart';
-import 'package:app_turismo/services/conection_status_provider.dart';
-import 'package:app_turismo/theme/theme.dart';
+
+import 'package:app_turismo/providers/conection_status_provider.dart';
+import 'package:app_turismo/theme/style_global.dart';
+
 import 'package:app_turismo/utils/check_internet_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -29,7 +31,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
     final conexion = Provider.of<ConnectionStatusChangeNotifier>(context);
     return SafeArea(
       child: Scaffold(
-          backgroundColor: kBackgroundColor,
+          backgroundColor: Theme.of(context).primaryColor,
           body: ListView(
             children: [
               //CARRUSEL IMAGES
@@ -70,10 +72,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
                 width: double.infinity,
                 margin: EdgeInsets.only(
                     top: 18,
-                    left: defaultMargin,
-                    right: defaultMargin,
+                    left: Themas.defaultMargin,
+                    right: Themas.defaultMargin,
                     bottom: 20),
-                decoration: BoxDecoration(color: kBackgroundColor),
+                decoration: BoxDecoration(color: Themas.kBackgroundColor),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,9 +83,9 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     Center(
                       child: Text(
                         lugar.title!.toUpperCase(),
-                        style: yellowTextStyle.copyWith(
+                        style: Themas.yellowTextStyle.copyWith(
                           fontSize: 22,
-                          fontWeight: semiBold,
+                          fontWeight: Themas.semiBold,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -160,7 +162,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
               ),
               Container(
                 padding: const EdgeInsets.all(30),
-                color: kGreyColor,
+                color: Themas.kGreyColor,
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,10 +170,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     Row(
                       children:[ Text(
                         'Descripción del Lugar',
-                        style: whiteTextStyle.copyWith(
+                        style: Themas.whiteTextStyle.copyWith(
                             fontSize: 18,
-                            fontWeight: semiBold,
-                            color: kPrimaryColor),
+                            fontWeight: Themas.semiBold,
+                            color: Themas.kPrimaryColor),
                       ),
                       const SizedBox(width:5),
                       const Icon(
@@ -183,17 +185,17 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     ),
                     Text(
                       lugar.description!,
-                      style: whiteTextStyle.copyWith(
-                          fontSize: 14, fontWeight: regular),
+                      style: Themas.whiteTextStyle.copyWith(
+                          fontSize: 14, fontWeight: Themas.regular),
                       textAlign: TextAlign.justify,
                     ),
                     Row(children: [
                       Text(
                         'Parroquia',
-                        style: whiteTextStyle.copyWith(
+                        style: Themas.whiteTextStyle.copyWith(
                             fontSize: 18,
-                            fontWeight: semiBold,
-                            color: kPrimaryColor),
+                            fontWeight: Themas.semiBold,
+                            color: Themas.kPrimaryColor),
                       ),
                       const SizedBox(width:5),
                       const Icon(
@@ -204,8 +206,8 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     ]),
                     Text(
                       lugar.parroquia!,
-                      style: whiteTextStyle.copyWith(
-                          fontSize: 14, fontWeight: regular),
+                      style: Themas.whiteTextStyle.copyWith(
+                          fontSize: 14, fontWeight: Themas.regular),
                       textAlign: TextAlign.justify,
                     )
                   ],

@@ -1,4 +1,4 @@
-import 'package:app_turismo/services/conection_status_provider.dart';
+import 'package:app_turismo/providers/conection_status_provider.dart';
 import 'package:app_turismo/utils/check_internet_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

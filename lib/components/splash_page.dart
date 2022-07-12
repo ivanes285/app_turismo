@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:app_turismo/pages/home_page.dart';
+import 'package:app_turismo/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -31,12 +31,12 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               Image.asset(
                 'assets/logo.png',
-                height: 250,
+                height: 320,
               ),
               const SizedBox(
-                height: 30.0,
+                height: 50.0,
               ),
-              const Text("Pedro Moncayo Turismo",
+              const Text("Pedro Moncayo Turístico",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 25.0,
@@ -61,7 +61,7 @@ class _SplashPageState extends State<SplashPage> {
         () => {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => const MainPage()),
               )
             });
   }
