@@ -50,21 +50,22 @@ class Events {
                             ),
                           ),
                           Container(
-                              color: const Color(0xffFEBE02),
+                              color: const Color(0xff21564C),
                               height: 70.0,
                               width: double.infinity,
                               child: Column(
                                 children: [
-                                  const SizedBox(height: 2),
+                                  const SizedBox(height: 7),
                                   Center(
                                       child: Text(
                                     listEventos[index].title!.toUpperCase(),
                                     style: const TextStyle(
+                                         color: Colors.white,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.center,
                                   )),
-                                   const SizedBox(height: 12),
+                                   const SizedBox(height: 10),
                                   Center(
                                       child: Row(
                                           mainAxisAlignment:
@@ -75,6 +76,7 @@ class Events {
                                         Text(
                                           listEventos[index].hour!,
                                           style: const TextStyle(
+                                               color: Colors.white,
                                               fontSize: 15.0,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -83,6 +85,7 @@ class Events {
                                         Text(
                                           listEventos[index].getDate,
                                           style: const TextStyle(
+                                                  color: Colors.white,
                                               fontSize: 15.0,
                                               fontWeight: FontWeight.bold),
                                         ),

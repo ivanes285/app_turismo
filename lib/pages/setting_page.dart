@@ -1,5 +1,9 @@
 // // ignore_for_file: avoid_unnecessary_containers
 
+
+
+import 'dart:developer';
+
 import 'package:app_turismo/components/change_theme.dart';
 import 'package:app_turismo/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +23,13 @@ class _SettingPageState extends State<SettingPage> {
   void initState() {
     super.initState();
     getCurrentAppTheme();
+    log(themeChangeProvider.getTheme.toString());
+    log("hola");
   }
 
   void getCurrentAppTheme() async {
-    themeChangeProvider.setTheme = await ThemePreferens.getTheme();
+    themeChangeProvider.setTheme =
+        await themeChangeProvider.themePreferens.getTheme();
   }
 
   @override
@@ -31,10 +38,12 @@ class _SettingPageState extends State<SettingPage> {
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-             Text(
-              "Cambiar tema de la aplicación ?",
-              style: TextStyle(color: Theme.of(context).primaryColorDark, fontSize:18),
+          child: Column(children: [
+            const SizedBox(height: 80),
+            Text(
+              "Tema de la aplicación",
+              style: TextStyle(
+                  color: Theme.of(context).primaryColorDark, fontSize: 18),
             ),
             const SizedBox(
               height: 20,

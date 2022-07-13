@@ -1,15 +1,12 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, unnecessary_brace_in_string_interps, use_build_context_synchronously
 
-import 'dart:developer';
+
 import 'package:app_turismo/models/lugares.dart';
-
-import 'package:app_turismo/providers/conection_status_provider.dart';
 import 'package:app_turismo/theme/style_global.dart';
-
 import 'package:app_turismo/utils/check_internet_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:map_launcher/map_launcher.dart';
 
@@ -17,6 +14,7 @@ ConnectionStatus status = ConnectionStatus.online;
 
 class PlaceDetail extends StatefulWidget {
   final LugaresModel lugar;
+
   const PlaceDetail({Key? key, required this.lugar}) : super(key: key);
 
   @override
@@ -28,13 +26,13 @@ class _PlaceDetailState extends State<PlaceDetail> {
 
   @override
   Widget build(BuildContext context) {
-    final conexion = Provider.of<ConnectionStatusChangeNotifier>(context);
     return SafeArea(
       child: Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
           body: ListView(
             children: [
               //CARRUSEL IMAGES
+              const SizedBox(height:5),
               Column(
                 children: [
                   lugar.images!.length > 1
@@ -100,7 +98,6 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                         
                       children: [
                         InkWell(
                           onTap: () => {_makePhoneCall(lugar.contact!)},
@@ -119,7 +116,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
                           ),
                         ),
                         InkWell(
-                          onTap: () => {log(conexion.status.toString())},
+                          onTap: () => {
+                            _onShareWithResult(context, lugar.title),
+                        
+                          },
                           child: Column(
                             children: const [
                               Icon(
@@ -161,17 +161,13 @@ class _PlaceDetailState extends State<PlaceDetail> {
                             ],
                           ),
                         ),
-
                       ],
-                     
                     ),
                     Container(
-                    child: const SizedBox(height: 10),
+                      child: const SizedBox(height: 10),
                     ),
                   ],
-                  
                 ),
-                
               ),
 
               //  DESCRIPCION Y PARROQUIA
@@ -246,7 +242,19 @@ Future<void> _makePhoneCall(String phoneNumber) async {
   await launchUrl(launchUri);
 }
 
+void _onShareWithResult(BuildContext context, lugar) async {
+  final box = context.findRenderObject() as RenderBox?;
+  ShareResult result;
+  String titulo = lugar.toString().toUpperCase();
+  result = await Share.shareWithResult(
+      'Ven a $titulo, para mas información visita la página WEB https://www.npmjs.com/ o descarga nuestra aplicación móvil en la Play Store📱🤳 "Pedro Moncayo Turístico"',
+      subject: 'Lugar Turístico de Pedro Moncayo',
+      sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
 
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text("Share result: ${result.status}"),
+  ));
+}
 
 
 

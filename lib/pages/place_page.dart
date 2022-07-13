@@ -4,11 +4,11 @@ import 'package:app_turismo/theme/style_global.dart';
 import 'package:app_turismo/utils/skeletos.dart';
 import 'package:flutter/material.dart';
 
-
-class Places{
-  
- static Widget places(bool loadingPlaces,List<LugaresModel> listLugares,context) {
- PageController pageControllerPlaces = PageController(viewportFraction: 0.45);
+class Places {
+  static Widget places(
+      bool loadingPlaces, List<LugaresModel> listLugares, context) {
+    PageController pageControllerPlaces =
+        PageController(viewportFraction: 0.45);
     if (loadingPlaces) return Skeletos.sckeletoPlace();
     return Container(
       margin: const EdgeInsets.only(top: 10),
@@ -31,7 +31,7 @@ class Places{
                         Expanded(
                           child: InkWell(
                             onTap: () => {
-                             FocusScope.of(context).unfocus(),
+                              FocusScope.of(context).unfocus(),
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -58,6 +58,7 @@ class Places{
                               child: Text(
                             listLugares[index].title!.toUpperCase(),
                             style: const TextStyle(
+                                 color: Colors.white,
                                 fontSize: 15.0, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           )),
@@ -72,7 +73,7 @@ class Places{
           Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color:  Themas.kBackgroundColorButton ,
+                color: Themas.kBackgroundColorButton,
               ),
               padding: const EdgeInsets.all(30),
               width: double.infinity,
@@ -84,7 +85,7 @@ class Places{
                     style: Themas.whiteTextStyle.copyWith(
                       fontSize: 18,
                       color: const Color(0xffC70039),
-                      fontWeight:Themas.semiBold,
+                      fontWeight: Themas.semiBold,
                     ),
                   ),
                   const SizedBox(height: 45),
@@ -100,5 +101,4 @@ class Places{
             ),
     );
   }
-
 }

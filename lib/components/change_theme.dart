@@ -14,9 +14,9 @@ class ThemePreferens {
     // SharedPreferences
   }
 
-  static Future<String> getTheme() async {
+   Future<String> getTheme() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getString(THEME_MODE) ?? LIGHT;
+  return prefs.getString(THEME_MODE) ?? DARK;
   
   }
 }
