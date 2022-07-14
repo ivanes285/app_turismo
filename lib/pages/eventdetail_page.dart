@@ -58,13 +58,9 @@ class _EventDetailState extends State<EventDetail> {
               ),
               //TITULO
               Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(
-                    top: 18,
-                    left: Themas.defaultMargin,
-                    right: Themas.defaultMargin,
-                    bottom: 2),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.only(left: 10, right: 10,top:15, bottom: 12),
+                   padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
                   color: Themas.kGreyColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -175,7 +171,7 @@ class _EventDetailState extends State<EventDetail> {
                       ),
                       const SizedBox(width: 5),
                       const Icon(
-                        Icons.place,
+                        Icons.timer,
                         color: Colors.white,
                         size: 18.0,
                       ),

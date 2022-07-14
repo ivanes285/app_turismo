@@ -22,7 +22,7 @@
     </intent>
 </queries>
    <application
-        android:label="app_turismo"
+        android:label="Pedro Moncayo Turístico"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
       

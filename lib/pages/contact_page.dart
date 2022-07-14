@@ -148,13 +148,16 @@ class ContactPage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 15.0,
+              height: 20.0,
             ),
             Text("Comentarios o Sugerencias a:",
                 style: TextStyle(
                   color: Theme.of(context).primaryColorDark,
                   fontSize: 18.0,
                 )),
+                 const SizedBox(
+              height: 5.0,
+            ),
             InkWell(
                 child: const Text('munipm@pedromoncayo.gob.ec', style: TextStyle(
                 color: Color(0xff005CA5),

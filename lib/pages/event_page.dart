@@ -54,6 +54,8 @@ class Events {
                               height: 70.0,
                               width: double.infinity,
                               child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 7),
                                   Center(
@@ -65,31 +67,7 @@ class Events {
                                         fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.center,
                                   )),
-                                   const SizedBox(height: 10),
-                                  Center(
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                        const SizedBox(width: 18),
-                                        const Icon(Icons.timer),
-                                        Text(
-                                          listEventos[index].hour!,
-                                          style: const TextStyle(
-                                               color: Colors.white,
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                       const SizedBox(width: 30),
-                                        const Icon(Icons.date_range),
-                                        Text(
-                                          listEventos[index].getDate,
-                                          style: const TextStyle(
-                                                  color: Colors.white,
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ])),
+                                  
                                 ],
                               )),
                         ],
