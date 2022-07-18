@@ -16,14 +16,14 @@ class ContactPage extends StatelessWidget {
                 child: Column(
           children: [
             const SizedBox(
-              height: 50.0,
+              height: 40.0,
             ),
             Image.asset(
               'assets/logo1.png',
               height: 150,
             ),
             const SizedBox(
-              height: 20.0,
+              height: 15.0,
             ),
             Text("CONTÁCTANOS",
                 style: TextStyle(
@@ -90,8 +90,7 @@ class ContactPage extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      _launchUrl(
-                          "https://www.facebook.com/GADpedromoncayo");
+                      _launchUrl("https://www.facebook.com/GADpedromoncayo");
                     },
                   ),
                   const SizedBox(height: 5),
@@ -140,41 +139,72 @@ class ContactPage extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      _launchUrl(
-                          "https://www.instagram.com/gadpedromoncayo/");
+                      _launchUrl("https://www.instagram.com/gadpedromoncayo/");
+                    },
+                  ),
+                  const SizedBox(height: 5),
+                  //INSTAGRAM
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 14),
+                      textStyle: const TextStyle(fontSize: 20),
+                      primary: Theme.of(context).primaryColorDark,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                            size: 30,
+                            color: Color.fromARGB(255, 70, 227, 143),
+                            UniconsLine.phone),
+                        SizedBox(width: 5),
+                        Text("Llámanos")
+                      ],
+                    ),
+                    onPressed: () {
+                      _makePhoneCall();
                     },
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 20.0,
+              height: 15.0,
             ),
             Text("Comentarios o Sugerencias a:",
                 style: TextStyle(
                   color: Theme.of(context).primaryColorDark,
                   fontSize: 18.0,
                 )),
-                 const SizedBox(
-              height: 5.0,
+            const SizedBox(
+              height: 4.0,
             ),
             InkWell(
-                child: const Text('munipm@pedromoncayo.gob.ec', style: TextStyle(
-                color: Color(0xff005CA5),
-                decoration: TextDecoration.underline,
-                fontSize:15
-                )),
+                child: const Text('munipm@pedromoncayo.gob.ec',
+                    style: TextStyle(
+                        color: Color(0xff005CA5),
+                        decoration: TextDecoration.underline,
+                        fontSize: 16)),
                 onTap: () {
                   const toEmail = 'munipm@pedromoncayo.gob.ec';
                   const subject = 'Sugerencia';
                   const message = 'Hola me gustaría hacer una sugerencia ..\n';
-                  const url =
-                      'mailto:$toEmail?subject=$subject&body=$message';
+                  const url = 'mailto:$toEmail?subject=$subject&body=$message';
                   _launchUrl(url);
                 }),
           ],
         ))));
   }
+}
+
+Future<void> _makePhoneCall() async {
+  final Uri launchUri = Uri(
+    scheme: 'tel',
+    path: '(02) 383-6560',
+  );
+
+  await launchUrl(launchUri);
 }
 
 Future<void> _launchUrl(String url) async {

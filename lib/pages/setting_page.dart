@@ -88,17 +88,20 @@ class _SettingPageState extends State<SettingPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/iconosetting.png',
-                      height: 70,
-                      width:70
-                    ),
+                    Image.asset('assets/iconosetting.png',
+                        height: 70, width: 70),
                     Text(
                       'Pedro Moncayo Turístico',
                       style: Themas.whiteTextStyle
                           .copyWith(color: Colors.white, fontSize: 10),
                     ),
-                      const SizedBox(height: 10),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Versión 1.0.0',
+                      style: Themas.whiteTextStyle
+                          .copyWith(color: Colors.white, fontSize: 10),
+                    ),
+                    const SizedBox(height: 10),
                     Text(
                       'Desarrollado por:',
                       style: Themas.whiteTextStyle

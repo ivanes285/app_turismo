@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: theme.isDarkTheme()? ThemeDark : ThemeLight,
+      theme: theme.isDarkTheme() ? ThemeDark : ThemeLight,
       home: const SplashPage(),
     );
   }

@@ -247,7 +247,7 @@ void _onShareWithResult(BuildContext context, lugar) async {
   ShareResult result;
   String titulo = lugar.toString().toUpperCase();
   result = await Share.shareWithResult(
-      'Ven a $titulo, para mas información visita la página WEB https://www.npmjs.com/ o descarga nuestra aplicación móvil en la Play Store📱🤳 "Pedro Moncayo Turístico"',
+      'Ven a $titulo, para mas información visita la página WEB https://pedromoncayoturistico.com/ o descarga nuestra aplicación móvil en la Play Store📱🤳 "Pedro Moncayo Turístico"',
       subject: 'Lugar Turístico de Pedro Moncayo',
       sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
 
