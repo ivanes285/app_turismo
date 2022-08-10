@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
+
 import 'package:unicons/unicons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -115,10 +116,12 @@ class ContactPage extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      _launchUrl("https://twitter.com/GADPedroMoncayo");
+                      _launchUrl("https://twitter.com/GADPedroMoncayo?s=20&t=PQJjxFjvFIu5Fnf2TXPqhw");
+                    
                     },
                   ),
                   const SizedBox(height: 5),
+
                   //INSTAGRAM
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
@@ -211,8 +214,9 @@ Future<void> _launchUrl(String url) async {
   final Uri _url = Uri.parse(url);
   if (!await launchUrl(_url,
       mode: LaunchMode.platformDefault,
-      webViewConfiguration:
-          const WebViewConfiguration(enableJavaScript: true))) {
+      webViewConfiguration: const WebViewConfiguration(
+        enableJavaScript: true,
+      ))) {
     throw 'Could not launch $_url';
   }
 }
